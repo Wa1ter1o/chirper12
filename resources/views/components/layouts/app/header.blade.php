@@ -40,9 +40,18 @@
             <flux:spacer />
 
             <flux:navbar class="mr-1.5 space-x-0.5 py-0!">
-                <flux:tooltip :content="__('Search')" position="bottom">
-                    <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
-                </flux:tooltip>
+                <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
+                    <flux:radio value="light" icon="sun">Light</flux:radio>
+                    <flux:radio value="dark" icon="moon">Dark</flux:radio>
+                    <flux:radio value="system" icon="computer-desktop">System</flux:radio>
+                </flux:radio.group>
+
+                <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle" aria-label="Toggle dark mode" >
+                    Dark Mode
+                </flux:button>   
+
+                
+               
                 <flux:tooltip :content="__('Repository')" position="bottom">
                     <flux:navbar.item
                         class="h-10 max-lg:hidden [&>div>svg]:size-5"
