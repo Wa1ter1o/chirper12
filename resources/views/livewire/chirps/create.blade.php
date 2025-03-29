@@ -8,6 +8,13 @@ new class extends Component {
     #[Validate('required|string|max:255')]
     public string $message = '';
 
+    public function store()
+    {
+        $this->validate();
+        
+        
+    }
+
 
 
 }; ?>

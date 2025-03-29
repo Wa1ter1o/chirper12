@@ -41,14 +41,39 @@
 
             <flux:navbar class="mr-1.5 space-x-0.5 py-0!">
                 <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
-                    <flux:radio value="light" icon="sun">Light</flux:radio>
-                    <flux:radio value="dark" icon="moon">Dark</flux:radio>
-                    <flux:radio value="system" icon="computer-desktop">System</flux:radio>
+                    <flux:radio value="light" icon="moon" x-bind:hidden="$flux.appearance != 'dark'">Oscuro</flux:radio>
+                    <flux:radio value="dark" icon="computer-desktop" x-bind:hidden="$flux.appearance != 'system'">Sistema</flux:radio>
+                    <flux:radio value="system" icon="sun" x-bind:hidden="$flux.appearance != 'light'">Claro</flux:radio>
                 </flux:radio.group>
 
-                <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle" aria-label="Toggle dark mode" >
-                    Dark Mode
-                </flux:button>   
+                {{-- <flux:dark-button x-data="{ mode: $flux.appearance || 'light' }" 
+                  x-on:click="
+                    if (mode === 'light') {
+                        mode = 'dark';
+                        $flux.appearance = 'dark';
+                    } else if (mode === 'dark') {
+                        mode = 'system';
+                        $flux.appearance = 'system';
+                    } else {
+                        mode = 'light';
+                        $flux.appearance = 'light';
+                    }
+                  " 
+                  variant="subtle" 
+                  aria-label="Toggle dark mode">
+                    <template x-if="mode === 'light'">
+                        <flux:icon name="sun" />
+                    </template>
+                    <template x-if="mode === 'dark'">
+                        <flux:icon name="moon" />
+                    </template>
+                    <template x-if="mode === 'system'">
+                        <flux:icon name="computer-desktop" />
+                    </template>
+                    <span x-text="mode === 'light' ? 'Claro' : (mode === 'dark' ? 'Oscuro' : 'Sistema')"></span>
+                </flux:dark-button> --}}
+              
+                 
 
                 
                
