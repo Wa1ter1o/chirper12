@@ -4,7 +4,6 @@ use App\Models\Chirp;
 use Illuminate\Database\Eloquent\Collection; 
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
-use App\Events\ChirpCreated;
 
 new class extends Component 
 {
@@ -31,7 +30,6 @@ new class extends Component
 
         $this->getChirps();
 
-        //Event::dispatch(new ChirpCreated($chirp));
     }
 
     #[On('chirp-edit-canceled')]
@@ -89,7 +87,7 @@ new class extends Component
     <script>
         window.Echo.private(`new-chirp`)
             .listen('ChirpCreated', (e) => {
-                //console.log(e);
+                /* console.log(e); */
                 $wire.dispatch('chirp-created');
             });
     </script>
